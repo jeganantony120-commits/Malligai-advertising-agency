@@ -723,60 +723,115 @@
         --header-h: 64px;
       }
 
+      .site-header {
+        background: rgba(250, 246, 236, .98);
+        overflow-x: hidden;
+      }
+
       .header-inner {
-        padding: 0 20px;
-        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 12px;
+        gap: 8px;
+        box-sizing: border-box;
       }
 
       .brand-mark {
-        height: 34px;
+        height: 36px;
         width: auto;
-        max-width: 150px;
+        max-width: 42%;
+        min-width: 0;
+        flex-shrink: 1;
       }
 
       .brand-mark__img {
         height: 100%;
-        width: auto;
+        width: 100%;
         max-width: 100%;
         object-fit: contain;
       }
 
       .header-right {
-        gap: 10px;
+        gap: 8px;
+        min-width: 0;
+        flex-shrink: 0;
       }
 
       .lang-switch {
-        font-size: .78rem;
+        font-size: .82rem;
+        gap: 6px;
+        white-space: nowrap;
       }
 
       .menu-toggle {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
       }
 
       .hero {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 70px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: calc(var(--header-h) + 16px);
+        padding-bottom: 38px;
+      }
+
+      .hero-grid {
+        gap: 30px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .brand-label {
+        margin-bottom: 18px;
+        font-size: .68rem;
+        letter-spacing: .12em;
       }
 
       .headline {
-        max-width: none;
-        font-size: clamp(2.1rem, 9vw, 2.7rem);
+        max-width: 6.8ch;
+        font-size: clamp(2.7rem, 15vw, 3.8rem);
+        line-height: .9;
+        margin-bottom: 18px;
       }
 
       .sub {
-        font-size: 1rem;
-        max-width: none;
+        font-size: .98rem;
+        max-width: 17ch;
+        line-height: 1.5;
+        margin-bottom: 24px;
       }
 
       .cta-row {
-        gap: 20px 26px;
-        margin-bottom: 32px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        padding: 16px 18px;
+        font-size: 1rem;
+      }
+
+      .btn-secondary {
+        justify-content: flex-start;
+        font-size: 1rem;
       }
 
       .tagline {
         max-width: none;
+        font-size: .78rem;
+        letter-spacing: .08em;
+        padding-top: 18px;
       }
 
       .scroll-cue {
@@ -785,17 +840,27 @@
       }
 
       .mobile-nav {
-        padding: 8px 20px 32px;
+        padding: 8px 16px 28px;
+      }
+
+      .hero-visual {
+        min-height: 0;
+        padding-left: 0;
+      }
+
+      .logo-wrap {
+        width: min(100%, 320px);
       }
     }
 
     @media (max-width:400px) {
       .headline {
-        font-size: clamp(1.95rem, 10vw, 2.3rem);
+        max-width: 6.8ch;
+        font-size: clamp(2.7rem, 18vw, 3.7rem);
       }
 
       .btn-primary {
-        padding: 14px 24px;
+        padding: 16px 18px;
       }
 
       .brand-label {
