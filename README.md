@@ -44,4 +44,4 @@ This site is a static website and can be hosted on:
 - any static hosting service
 
 ## License
-This project is for 
+This project is for demonstration and portfolio use.
