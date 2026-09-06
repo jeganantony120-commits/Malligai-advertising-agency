@@ -2617,23 +2617,27 @@
 
     .photo-viewer__nav {
       flex: 0 0 auto;
+      position: relative;
+      z-index: 2;
       width: 52px;
       height: 52px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      border: 1px solid rgba(250, 246, 236, .3);
-      background: rgba(250, 246, 236, .06);
-      color: var(--ivory);
+      border: 1px solid rgba(36, 37, 25, .16);
+      background: rgba(250, 246, 236, .92);
+      color: var(--ink);
       font-size: 1.2rem;
       cursor: pointer;
-      transition: border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, .24);
+      transition: border-color .3s var(--ease), background .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
     }
 
     .photo-viewer__nav:hover {
-      border-color: var(--ivory);
-      background: rgba(250, 246, 236, .14);
+      border-color: var(--olive);
+      background: var(--ivory);
+      color: var(--olive-deep);
       transform: translateY(-1px);
     }
 
@@ -3767,16 +3771,6 @@
 
           <div class="photo-controls">
             <span class="photo-counter" data-photo-counter aria-live="polite">01 / 05</span>
-            <div class="photo-nav-row" aria-label="Gallery navigation">
-              <button class="photo-nav photo-nav--prev" type="button" data-photo-prev aria-label="Previous photograph"
-                data-i18n-aria-label="photography.prev">
-                <span aria-hidden="true">&#8592;</span>
-              </button>
-              <button class="photo-nav photo-nav--next" type="button" data-photo-next aria-label="Next photograph"
-                data-i18n-aria-label="photography.next">
-                <span aria-hidden="true">&#8594;</span>
-              </button>
-            </div>
             <div class="photo-dots" aria-label="Choose a slide"></div>
           </div>
         </div>
