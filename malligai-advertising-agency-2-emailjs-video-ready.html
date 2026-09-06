@@ -42,6 +42,8 @@
     }
 
     html {
+      width: 100%;
+      max-width: 100vw;
       scroll-behavior: smooth;
     }
 
@@ -52,6 +54,8 @@
     }
 
     body {
+      width: 100%;
+      max-width: 100vw;
       margin: 0;
       background: var(--ivory);
       color: var(--ink);
@@ -723,14 +727,26 @@
         --header-h: 64px;
       }
 
+      body {
+        overflow-x: hidden;
+      }
+
+      .hero-canvas,
+      .hero-glow {
+        display: none !important;
+      }
+
       .site-header {
         background: rgba(250, 246, 236, .98);
         overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
       }
 
       .header-inner {
         width: 100%;
-        max-width: 100%;
+        max-width: 100vw;
+        min-width: 0;
         padding: 0 12px;
         gap: 8px;
         box-sizing: border-box;
@@ -738,9 +754,10 @@
 
       .brand-mark {
         height: 36px;
-        width: auto;
+        width: clamp(84px, 30vw, 120px);
         max-width: 42%;
         min-width: 0;
+        flex: 0 1 auto;
         flex-shrink: 1;
       }
 
@@ -755,12 +772,14 @@
         gap: 8px;
         min-width: 0;
         flex-shrink: 0;
+        max-width: calc(100% - 110px);
       }
 
       .lang-switch {
         font-size: .82rem;
         gap: 6px;
         white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .menu-toggle {
@@ -841,6 +860,13 @@
 
       .mobile-nav {
         padding: 8px 16px 28px;
+      }
+
+      .hero-glow {
+        width: min(360px, 92vw);
+        height: min(360px, 92vw);
+        left: 50%;
+        top: 36%;
       }
 
       .hero-visual {
@@ -2720,8 +2746,8 @@
 
     .hero-glow {
       position: absolute;
-      width: 520px;
-      height: 520px;
+      width: min(520px, 78vw);
+      height: min(520px, 78vw);
       border-radius: 50%;
       background: radial-gradient(circle, rgba(224, 138, 31, .12) 0%, rgba(107, 122, 18, .06) 45%, transparent 70%);
       pointer-events: none;
@@ -4050,6 +4076,12 @@
       var menuToggle = document.getElementById("menuToggle");
       var mobileNav = document.getElementById("mobileNav");
       var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var isMobileNavLayout = window.matchMedia("(max-width: 640px)").matches;
+
+      if (isMobileNavLayout && heroCanvas && heroSection && heroGlow) {
+        heroCanvas.style.display = "none";
+        heroGlow.style.display = "none";
+      }
 
       function getPath(obj, path) {
         return path.split(".").reduce(function (acc, key) {
@@ -4621,7 +4653,7 @@
       var heroLogoWrap = document.querySelector(".hero-visual .logo-wrap");
       var heroPetalMotif = document.querySelector(".hero-visual .petal-motif");
 
-      if (heroCanvas && heroSection && !prefersReduced) {
+      if (heroCanvas && heroSection && !prefersReduced && !window.matchMedia("(max-width: 640px)").matches) {
         var ctx = heroCanvas.getContext("2d");
         var width = 0, height = 0;
         var isHeroVisible = true;
